@@ -1,0 +1,25 @@
+baseurl = "https://gycwest.com/"
+languageCode = "en-us"
+title = "GYC West"
+#theme = "simple1-theme"
+publishdir = "../frontend.live"
+
+IgnoreFiles = [
+	".*\\.kate-swp$",
+]
+
+[params]
+	# To provide some metadata for search engines feel free to add a few
+    # information about you and your website.
+	name = "Ricky Curtice"
+	description = "TODO Describe your website"
+
+	# Enable Google Analytics by inserting your tracking code
+	#googleAnalytics = "UA-16290318-3"
+
+	#backendhost = "//10.0.2.13:1313"
+
+	[params.copyright]
+		copyrights = [
+			"Copyright 2016, Richard Curtice",
+		]
