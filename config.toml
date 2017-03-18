@@ -1,7 +1,7 @@
 baseurl = "https://gycwest.com/"
 languageCode = "en-us"
 title = "GYC West"
-#theme = "simple1-theme"
+theme = "simple1-theme"
 publishdir = "../frontend.live"
 
 IgnoreFiles = [
@@ -12,14 +12,14 @@ IgnoreFiles = [
 	# To provide some metadata for search engines feel free to add a few
     # information about you and your website.
 	name = "Ricky Curtice"
-	description = "TODO Describe your website"
+	description = "GYC West"
 
 	# Enable Google Analytics by inserting your tracking code
-	#googleAnalytics = "UA-16290318-3"
+	googleAnalytics = "UA-3890335-3" # Pulled off of old web archive https://web.archive.org/web/20160316005751/http://www.gycwest.com/
 
 	#backendhost = "//10.0.2.13:1313"
 
 	[params.copyright]
 		copyrights = [
-			"Copyright 2016, Richard Curtice",
+			"Copyright 2017, Richard Curtice",
 		]
