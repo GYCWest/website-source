@@ -5,7 +5,7 @@ theme = "simple1-theme"
 publishdir = "../frontend.live"
 
 IgnoreFiles = [
-	".*\\.kate-swp$",
+	"\\.kate-swp$",
 ]
 
 [params]
@@ -15,7 +15,7 @@ IgnoreFiles = [
 	description = "GYC West"
 
 	# Enable Google Analytics by inserting your tracking code
-	googleAnalytics = "UA-3890335-3" # Pulled off of old web archive https://web.archive.org/web/20160316005751/http://www.gycwest.com/
+	googleAnalytics = "UA-16290318-6" #"UA-3890335-3" # Pulled off of old web archive https://web.archive.org/web/20160316005751/http://www.gycwest.com/ Not sure who owns this tracker...
 
 	#backendhost = "//10.0.2.13:1313"
 
