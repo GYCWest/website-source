@@ -1,0 +1,41 @@
+body {
+}
+
+body > header header {
+	position: relative;
+	margin: 70pt 0 40pt 0;
+}
+
+body > header header > h1 {
+	margin: 0;
+}
+
+body > header header > h2 {
+	margin: 0;
+}
+
+body > header logo {
+	display: block;
+	position: absolute;
+	top: -45px;
+	left: -30px;
+}
+
+body > header logo > img {
+	display: inline;
+	height: 156px;
+	Vertical-align: middle;
+}
+
+body > header nav {
+	position: absolute;
+	top: 3pt;
+	right: 5pt;
+}
+
+body > section {
+	position: relative;
+	width: 80%;
+	margin: 0 auto 0 auto;
+}
+

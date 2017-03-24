@@ -1,0 +1,57 @@
+body {
+	background-image: url("/img/umbrella_reflection.jpg");
+	background-position: top center;
+	background-size: cover;
+	background-repeat: no-repeat;
+
+	font-family: 'Raleway', sans-serif;
+	font-size: 15pt;
+}
+
+body > header header {
+	text-align: center;
+}
+
+body > header header > h1 {
+	font-family: 'Overlock SC', sans-serif;
+	font-size: 60pt;
+	font-weight: normal;
+	text-transform: uppercase;
+	letter-spacing: 16pt;
+}
+
+body > header header > h2 {
+	font-family: 'Raleway', sans-serif;
+	font-size: 20pt;
+	font-weight: normal;
+	font-style: italic;
+	text-transform: uppercase;
+	letter-spacing: 3pt;
+	border-top: 2px solid rgba(200,200,200,.8);
+}
+
+body > header nav {
+	border-bottom: 2px silver solid;
+}
+
+body > header nav a {
+	text-decoration: none;
+}
+
+/* Creates the side gradient in the menu */
+body > header nav a:not(:last-child)::after {
+	display: inline-block;
+	width: 2px;
+	line-height: 1em;
+	content: '\00a0';
+	margin: 0 0 0 9px;
+	background-image: linear-gradient(to bottom, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.0) 100%);
+}
+
+
+body > header logo {
+	font-family: 'Raleway', sans-serif;
+	font-size: 60px;
+	line-height: 156px;
+	color: #333;
+}
