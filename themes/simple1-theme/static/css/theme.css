@@ -120,6 +120,33 @@ body > section:not(:last-of-type)::after {
 	background-image: linear-gradient(to right, rgba(58,46,39,0.0) 0%, rgba(58,46,39,0.5) 50%, rgba(58,46,39,0.0) 100%);
 }
 
+body > section > h1 {
+	font-family: 'Overlock SC', sans-serif;
+	font-size: 30pt;
+	font-weight: normal;
+	margin: 0;
+}
+
+body > section h2 {
+	font-family: 'Overlock SC', sans-serif;
+	font-size: 20pt;
+	font-weight: normal;
+	margin: 0;
+}
+
+body > section.quote_block p {
+	font-style: italic;
+}
+
+body > section.quote_block p.source_ref {
+	font-weight: bold;
+	text-align: right;
+}
+
+body > section.quote_block p.source_ref::before {
+	content: "\2014 "; /* \2014 is an em dash */
+}
+
 /* back drop */
 #mainmenucontrol:checked ~ label[for=mainmenucontrol]::before {
 	background-color: rgba(0,0,0,0.8);
