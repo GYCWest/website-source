@@ -84,15 +84,7 @@
 				<h1>Reflect</h1>
 				<h2>The Daily Experience</h2>
 			</header>
-			<input type="checkbox" id="mainmenucontrol" />
-			<label for="mainmenucontrol"></label>
-			<nav id="mainmenu">
-				<a href="/" class="current">Home</a>
-				<a href="/handouts">Handouts</a>
-				<a href="/registration">Register</a>
-				<a href="/about">Meet GYC West</a>
-				<a href="/archives">Archives</a>
-			</nav>
+			{{ partial "mainmenu" (dict "sourceUrl" "/") }}
 			<logo><img src="/img/logo.png" alt="GYC West logo"/><div><p id="year">2017</p><p id="date">JUNE 22-24</p></div></logo>
 		</header>
 		<section id="speakers">

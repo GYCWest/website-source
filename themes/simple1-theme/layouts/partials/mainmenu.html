@@ -1,0 +1,9 @@
+<input type="checkbox" id="mainmenucontrol" />
+<label for="mainmenucontrol"></label>
+<nav id="mainmenu">
+	<a href="/"{{ if eq .sourceUrl "/" }}class="current"{{ end }}>Home</a>
+	<a href="/handouts"{{ if eq .sourceUrl "/handouts" }}class="current"{{ end }}>Handouts</a>
+	<a href="/registration"{{ if eq .sourceUrl "/registration" }}class="current"{{ end }}>Register</a>
+	<a href="/about"{{ if eq .sourceUrl "/about" }}class="current"{{ end }}>Meet GYC West</a>
+	<a href="/archives"{{ if eq .sourceUrl "/archives" }}class="current"{{ end }}>Archives</a>
+</nav>
