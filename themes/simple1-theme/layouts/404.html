@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Reflect: The Daily Experience, 2017 | GYC West</title>
+		<meta name="author" content="{{ with .Site.Params.name }}{{ . }}{{ end }}">
+		<meta name="description" content="{{ with .Site.Params.description }}{{ . }}{{ end }}"/>
+		<meta http-equiv="content-language" content="{{ with .Site.LanguageCode }}{{ . }}{{ end }}" />
+		{{ .Hugo.Generator }}
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon.png">
+		<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+		<link rel="manifest" href="/manifest.json">
+		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ededed">
+		<meta name="theme-color" content="#ffffff">
+		<!--[if lte IE 8]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
+		<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" type="text/css"/>
+		<link href="https://fonts.googleapis.com/css?family=Overlock+SC|Raleway" rel="stylesheet"/>
+		<link href="/css/theme.css" rel="stylesheet"/>
+		<link href="/css/structure_desktop.css" rel="stylesheet"/>
+		<style type="text/css">
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel-layout.min.js"></script>
+		<!--[if lte IE 8]><script type="text/javascript" src="{{ .Site.BaseURL }}js/ie/respond.min.js"></script><![endif]-->
+		{{ with .Site.Params.backendhost }}
+		<script type="text/javascript">var backendhost = "{{ . }}"</script>
+		{{ end }}
+		{{ partial "analyticstracking" . }}
+	</head>
+	<body>
+		<header>
+			<header>
+				<h1>404</h1>
+				<h2>Page Not Found</h2>
+			</header>
+			<input type="checkbox" id="mainmenucontrol" />
+			<label for="mainmenucontrol"></label>
+			<nav id="mainmenu">
+				<a href="/" class="current">Home</a>
+				<a href="/handouts">Handouts</a>
+				<a href="/registration">Register</a>
+				<a href="/about">Meet GYC West</a>
+				<a href="/archives">Archives</a>
+			</nav>
+			<logo><img src="/img/logo.png" alt="GYC West logo"/><div><p id="year">2017</p><p id="date">JUNE 22-24</p></div></logo>
+		</header>
+		<section>
+			<p>Please use the menu to find the page you are really looking for, or head to the <a href="/">home page to get the latest about GYC West!</a></p>
+		</section>
+	</body>
+</html>
