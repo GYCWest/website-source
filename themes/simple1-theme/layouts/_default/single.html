@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>{{ .Title }} | GYC West</title>
+		{{ with .Params.author }}<meta name="author" content="{{ . }}">{{ end }}
+		{{ with .Params.description }}<meta name="description" content="{{ . }}"/>{{ end }}
+		{{ with .Site.LanguageCode }}<meta http-equiv="content-language" content="{{ . }}" />{{ end }}
+		{{ .Hugo.Generator }}
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon.png">
+		<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+		<link rel="manifest" href="/manifest.json">
+		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ededed">
+		<meta name="theme-color" content="#ffffff">
+		<!--[if lte IE 8]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
+		<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" type="text/css"/>
+		<link href="https://fonts.googleapis.com/css?family=Overlock+SC|Raleway" rel="stylesheet"/>
+		<link href="/css/theme.css" rel="stylesheet"/>
+		<link href="/css/structure_desktop.css" rel="stylesheet"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel-layout.min.js"></script>
+		<!--[if lte IE 8]><script type="text/javascript" src="{{ .Site.BaseURL }}js/ie/respond.min.js"></script><![endif]-->
+		{{ with .Site.Params.backendhost }}
+		<script type="text/javascript">var backendhost = "{{ . }}"</script>
+		{{ end }}
+		{{ partial "analyticstracking" . }}
+	</head>
+	<body>
+		<header>
+			<header>
+				<h1>Reflect</h1>
+				<h2>The Daily Experience</h2>
+			</header>
+			{{ partial "mainmenu" . }}
+			<logo><img src="/img/logo.png" alt="GYC West logo"/><div><p id="year">2017</p><p id="date">JUNE 22-24</p></div></logo>
+		</header>
+		{{ .Content }}
+	</body>
+</html>
