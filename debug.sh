@@ -1,7 +1,5 @@
 #!/bin/bash
 
-rm -r .live-dev
+xdg-open http://localhost:5341/ &
 
-xdg-open http://10.0.2.13:5341/ &
-
-hugo server --baseURL 10.0.2.13 --bind 10.0.2.13 --port 5341 --watch $@
+hugo server --baseURL 0.0.0.0 --bind 0.0.0.0 --port 5341 --watch --cleanDestinationDir $@
