@@ -2,7 +2,7 @@ baseurl = "https://gycwest.com/"
 languageCode = "en-us"
 title = "GYC West"
 theme = "simple1-theme"
-publishdir = "../frontend.live"
+publishdir = ".live-dev"
 
 IgnoreFiles = [
 	"\\.kate-swp$",
