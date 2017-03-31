@@ -17,25 +17,109 @@ body > header header > h2 {
 body > header logo {
 	display: block;
 	position: absolute;
-	top: -45px;
+	top: -40px;
 	left: -30px;
+	
+	width: 280px;
 }
 
 body > header logo > img {
-	display: inline;
 	height: 156px;
-	Vertical-align: middle;
 }
 
-body > header nav {
+body > header logo > div {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+#mainmenu {
 	position: absolute;
 	top: 3pt;
 	right: 5pt;
+	text-align: right;
+}
+
+#mainmenu a {
+	white-space: nowrap;
 }
 
 body > section {
 	position: relative;
-	width: 80%;
-	margin: 0 auto 0 auto;
+	padding: 5em 10% 5em 10%;
+	vertical-align: top;
 }
 
+#mainmenucontrol {
+	display: none;
+}
+
+label[for=mainmenucontrol] {
+	display: none;
+	visibility: hidden;
+	float: right;
+}
+
+/* back drop */
+#mainmenucontrol:checked ~ label[for=mainmenucontrol]::before {
+	z-index: 200;
+	visibility: visible;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	content: "";
+	background-color: rgba(0,0,0,0.8);
+}
+
+/* button */
+label[for=mainmenucontrol]::after {
+	z-index: 600;
+	visibility: visible;
+	display: block;
+	position: absolute;
+	top: 15px;
+	right: 15px;
+}
+
+@media screen and (max-width: 1800px) {
+}
+@media screen and (max-width: 1280px) {
+}
+@media screen and (max-width: 980px) {
+	#mainmenu {
+		max-width: 450px;
+	}
+}
+@media screen and (max-width: 736px) {
+	#mainmenu {
+		display: none;
+	}
+	
+	#mainmenucontrol:checked ~ #mainmenu {
+		display: block;
+		z-index: 500;
+		top: 0;
+		right: 0;
+		border: none;
+		padding: 55px 30px 20px 0;
+		width: 50%;
+	}
+	
+	#mainmenu a {
+		display: block;
+		padding: 0 0 5px 0;
+	}
+	
+	#mainmenu a:not(:last-of-type)::after {
+		display: none;
+	}
+	
+	label[for=mainmenucontrol] {
+		display: block;
+	}
+}
+@media screen and (max-width: 480px) {
+}

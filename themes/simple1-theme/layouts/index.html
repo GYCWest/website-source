@@ -17,8 +17,58 @@
 		<!--[if lte IE 8]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
 		<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" type="text/css"/>
 		<link href="https://fonts.googleapis.com/css?family=Overlock+SC|Raleway" rel="stylesheet"/>
-		<link href="/css/structure_desktop.css" rel="stylesheet"/>
 		<link href="/css/theme.css" rel="stylesheet"/>
+		<link href="/css/structure_desktop.css" rel="stylesheet"/>
+		<style type="text/css">
+			#speakers {
+				background-image: url("/img/sunrise-1460243_1920.jpg");
+				background-position: center;
+				background-size: cover;
+				background-repeat: no-repeat;
+				text-align: center;
+			}
+			
+			#speakers > article {
+				display: inline-block;
+				padding: 0 10pt 0 10pt;
+				max-width: 200px;
+				vertical-align: top;
+			}
+			
+			#speakers > article > img, #speakers > article > div {
+				display: block;
+			}
+			
+			#speakers > article > img {
+				width: 200px;
+				height: 200px;
+				object-fit: cover;
+				border-radius: 100%;
+				border: 5px #3a2e27 solid;
+			}
+			
+			
+			#themescripture {
+				background-image: url("/img/texture-2136831.jpg");
+				background-position: center;
+				background-size: cover;
+				background-repeat: no-repeat;
+			}
+			
+			
+			#map > article, #map > iframe {
+				display: block;
+			}
+			
+			#map > iframe {
+				float: right;
+				
+				min-height: 600px;
+				width: 400px;
+				
+				border: none;
+			}
+		</style>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
 		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel-layout.min.js"></script>
@@ -34,55 +84,57 @@
 				<h1>Reflect</h1>
 				<h2>The Daily Experience</h2>
 			</header>
-			<nav>
-				<a href="/" class="active">Home</a>
+			<input type="checkbox" id="mainmenucontrol" />
+			<label for="mainmenucontrol"></label>
+			<nav id="mainmenu">
+				<a href="/" class="current">Home</a>
 				<a href="/handouts">Handouts</a>
 				<a href="/registration">Register</a>
 				<a href="/about">Meet GYC West</a>
 				<a href="/archives">Archives</a>
 			</nav>
-			<logo><img src="/img/logo.png" alt="GYC West logo"/><span>2017</span></logo>
+			<logo><img src="/img/logo.png" alt="GYC West logo"/><div><p id="year">2017</p><p id="date">JUNE 22-24</p></div></logo>
 		</header>
-		<section>
+		<section id="speakers">
 			<article>
-				<img src="/img/2017speakernamehere.jpg" />
+				<img src="/img/2017heidiandrewcarpenter.jpg" />
 				<div>
-					<h1>Speaker's and Wife's Name</h1>
-					<p>"Presentation Subject Title"</p>
+					<h1>Heidi and Andrew Carpenter</h1>
+					<!-- <p>"Presentation Subject Title"</p> -->
 				</div>
 			</article>
 			<article>
-				<img src="/img/2017speakernamehere.jpg" />
+				<img src="/img/2017zachleahpage.jpg" />
 				<div>
-					<h1>Speaker's and Wife's Name</h1>
-					<p>"Presentation Subject Title"</p>
+					<h1>Zach and Leah Page</h1>
+					<!-- <p>"Presentation Subject Title"</p> -->
 				</div>
 			</article>
 			<article>
-				<img src="/img/2017speakernamehere.jpg" />
+				<img src="/img/2017seannebblett.jpg" />
 				<div>
-					<h1>Speaker's and Wife's Name</h1>
-					<p>"Presentation Subject Title"</p>
-				</div>
-			</article>
-			<article>
-				<img src="/img/2017speakernamehere.jpg" />
-				<div>
-					<h1>Speaker's and Wife's Name</h1>
-					<p>"Presentation Subject Title"</p>
+					<h1>Sean Nebblett</h1>
+					<!-- <p>"Presentation Subject Title"</p> -->
 				</div>
 			</article>
 		</section>
 		<section>
-			<p>Cras finibus egestas nisi at scelerisque. Cras eu volutpat felis. Nullam porttitor purus commodo lorem elementum volutpat. Donec maximus ligula velit, id auctor sapien dignissim a. Fusce quis pellentesque neque. Suspendisse gravida ante in lectus pulvinar vulputate. Curabitur eget risus vel eros lacinia pellentesque nec at risus.</p>
+			<p>GYC West is excited to present its eleventh-annual conference with the theme:  “Reflect:The daily experience”. This year’s conference will focus on the practical side of following Christ in our everyday lives, and letting HIS light shine through us. On June 22nd through the 24th, young people from all over the region will gather at Pine Hills Academy in Auburn, CA for an inspiring mix of powerful messages, earnest prayer, outreach, and Christian fellowship.</p>
 		</section>
-		<section>
-			<p>Be sure to bring...</p>
-
-			<iframe src="//www.google.com/maps/embed/v1/place?q=10125 Ophir Rd, Newcastle, CA 95658
-				&zoom=17
+		<section class="scripture_block" id="themescripture">
+			<p>asdfasdfasdfasdf asdfasdf s</p>
+			<p class="scripture_ref">Asfasdf 0:0</p>
+		</section>
+		<section id="map">
+			<iframe src="//www.google.com/maps/embed/v1/place?q=Pine+Hills+Adventist+Academy
+				&zoom=15
 				&key=AIzaSyBkIpJw0XsFQoMjgJqBoaUbD0EyHm6u4GE">
 			</iframe>
+			<article>
+				<p>This year's GYC West is being held at <a href="https://www.google.com/maps/place/Pine+Hills+Adventist+Academy/">Pine Hills Adventist Academy</a>.</p>
+				<address>13500 Richards Lane, Auburn, CA 95603</address>
+				<p>Be sure to bring your Bible and notepaper as this year's content is designed to bring you not only closer to our Savior, but also to give you the tools you need to become a strong worker for Him at your home and at your church.</p>
+			</article>
 		</section>
 	</body>
 </html>
