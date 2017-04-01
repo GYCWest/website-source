@@ -17,7 +17,7 @@ if ! git diff-index --cached --quiet HEAD --ignore-submodules --; then
 fi
 
 # Build the project.
-hugo
+hugo --destination ../frontend.live
 
 cd ../frontend.live
 
