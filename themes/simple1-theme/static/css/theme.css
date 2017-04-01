@@ -154,9 +154,10 @@ body > section.quote_block p.source_ref::before {
 
 /* button */
 label[for=mainmenucontrol]::after {
-	content: "=";
+	font-family: FontAwesome;
+	content: "\f0c9"; /* fa-bars */
 	color: #3a2e27;
-	font-size: 40px;
+	font-size: 20px;
 	line-height: 30px;
 	border-radius: 3px;
 	background-image: linear-gradient(to bottom, silver, gray);
@@ -167,7 +168,7 @@ label[for=mainmenucontrol]::after {
 }
 
 #mainmenucontrol:checked ~ label[for=mainmenucontrol]::after {
-	content: "X";
+	content: "\f00d"; /* fa-times */
 }
 
 @media screen and (max-width: 736px) {
@@ -177,14 +178,35 @@ label[for=mainmenucontrol]::after {
 	}
 	
 	#mainmenu a:link {
-		color: #ca462e;
+		color: #ffddd7;
 	}
 
 	#mainmenu a:visited {
-		color: #a7341f;
+		color: #d2b5b0;
 	}
 
 	#mainmenu a:active {
 		color: #a7341f;
+	}
+	
+	#mainmenu a.current {
+		color: #a7341f;
+	}
+	
+	#mainmenucontrol:checked ~ #mainmenu {
+		text-align: left;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	body > header header > h1 {
+		font-size: 30pt;
+		letter-spacing: 8pt;
+		padding-top: 1em;
+	}
+
+	body > header header > h2 {
+		font-size: 10pt;
+		letter-spacing: 1pt;
 	}
 }
