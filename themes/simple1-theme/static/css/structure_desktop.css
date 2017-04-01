@@ -50,6 +50,10 @@ body > section {
 	vertical-align: top;
 }
 
+body > section:first-of-type {
+	padding-top: 1em;
+}
+
 #mainmenucontrol {
 	display: none;
 }
