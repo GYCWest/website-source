@@ -92,7 +92,8 @@ label[for=mainmenucontrol]::after {
 }
 @media screen and (max-width: 1280px) {
 }
-@media screen and (max-width: 980px) {
+/*@media screen and (max-width: 980px) {*/
+@media screen and (max-width: 1070px) {
 	#mainmenu {
 		max-width: 450px;
 	}
