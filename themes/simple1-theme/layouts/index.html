@@ -35,7 +35,7 @@
 				<h2>The Daily Experience</h2>
 			</header>
 			{{ partial "mainmenu" . }}
-			<logo><img src="/img/logo.png" alt="GYC West logo"/>{{ with .Site.Params.date }}<div><p id="year">{{ .year }}</p><p id="date">{{ .days }}</p></div>{{ end }}</logo>
+			<logo><a href="/"><img src="/img/logo.png" alt="GYC West logo"/></a>{{ with .Site.Params.date }}<div><p id="year">{{ .year }}</p><p id="date">{{ .days }}</p></div>{{ end }}</logo>
 		</header>
 		{{ .Content }}
 	</body>
