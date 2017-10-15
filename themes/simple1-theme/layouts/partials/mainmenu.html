@@ -1,12 +1,8 @@
 <input type="checkbox" id="mainmenucontrol" />
 <label for="mainmenucontrol"></label>
 <nav id="mainmenu">
-	<a href="/"{{ if eq .URL "/" }}class="current"{{ end }}>Home</a>
-	<!-- <a href="/handouts"{{ if eq .URL "/handouts" }}class="current"{{ end }}>Handouts</a> -->
-	<!-- <a href="/registration/"{{ if eq .URL "/registration/" }}class="current"{{ end }}>Personal Registration</a> -->
-	<!-- <a href="/registration/booth"{{ if eq .URL "/registration/booth" }}class="current"{{ end }}>Booth Registration</a> -->
-	<!-- <a href="/registration/food"{{ if eq .URL "/registration/food" }}class="current"{{ end }}>Meals</a> -->
-	<a href="/donate"{{ if eq .URL "/donate" }}class="current"{{ end }}>Donate</a>
-	<a href="/about"{{ if eq .URL "/about" }}class="current"{{ end }}>Meet GYC West</a>
-	<a href="/archives"{{ if eq .URL "/archives" }}class="current"{{ end }}>Archives</a>
+	{{ $currentPage := . }}
+	{{ range .Site.Menus.main }}
+		<a href="{{.URL}}"{{ if eq $currentPage.URL .URL }}class="current"{{ end }}>{{ .Name }}</a>
+	{{ end }}
 </nav>
