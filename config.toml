@@ -25,5 +25,5 @@ IgnoreFiles = [
 
 	[params.copyright]
 		copyrights = [
-			"Copyright 2017, Richard Curtice",
+			"Copyright 2018, Richard Curtice",
 		]

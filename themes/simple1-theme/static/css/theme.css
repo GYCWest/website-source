@@ -1,13 +1,13 @@
 a:link {
-	color: #782514;
+	color: #407614; /*For these colors, simply select a new hue, but keep the saturation and value the same as they are.*/
 }
 
 a:visited {
-	color: #46150c;
+	color: #26460c;
 }
 
 a:active {
-	color: #a25e50;
+	color: #74a14f;
 }
 
 a.current {
@@ -25,8 +25,8 @@ body {
 	font-family: 'Raleway', sans-serif;
 	font-size: 15pt;
 	
-	background-color: #f2e9e6;
-	color: #3a2e27;
+	background-color: #f4f9f0;
+	color: #2f3a27;
 }
 
 body > header header {
@@ -80,7 +80,7 @@ body > header #year, body > header #date {
 	font-family: 'Raleway', sans-serif;
 	margin: 0;
 	padding: 0;
-	color: #333;
+	/*color: #333;*/
 }
 
 body > header #year {
@@ -156,7 +156,7 @@ body > section.quote_block p.source_ref::before {
 label[for=mainmenucontrol]::after {
 	font-family: FontAwesome;
 	content: "\f0c9"; /* fa-bars */
-	color: #3a2e27;
+	color: #f4f9f0;
 	font-size: 20px;
 	line-height: 30px;
 	border-radius: 3px;
@@ -172,33 +172,6 @@ label[for=mainmenucontrol]::after {
 }
 
 @media screen and (max-width: 736px) {
-	#mainmenu {
-		background-color: #3a2e27;
-		border: none;
-	}
-	
-	#mainmenu a:link {
-		color: #ffddd7;
-	}
-
-	#mainmenu a:visited {
-		color: #d2b5b0;
-	}
-
-	#mainmenu a:active {
-		color: #a7341f;
-	}
-	
-	#mainmenu a.current {
-		color: #a7341f;
-	}
-	
-	#mainmenucontrol:checked ~ #mainmenu {
-		text-align: left;
-	}
-}
-
-@media screen and (max-width: 480px) {
 	body > header header > h1 {
 		font-size: 30pt;
 		letter-spacing: 8pt;
@@ -209,4 +182,32 @@ label[for=mainmenucontrol]::after {
 		font-size: 10pt;
 		letter-spacing: 1pt;
 	}
+	
+	#mainmenu {
+		background-color: #2f3a27;
+		border: none;
+	}
+	
+	#mainmenu a:link {
+		color: #e9ffd6;
+	}
+
+	#mainmenu a:visited {
+		color: #c0d2b1;
+	}
+
+	#mainmenu a:active {
+		color: #5da81f;
+	}
+	
+	#mainmenu a.current {
+		color: #5da81f;
+	}
+	
+	#mainmenucontrol:checked ~ #mainmenu {
+		text-align: left;
+	}
+}
+
+@media screen and (max-width: 480px) {
 }

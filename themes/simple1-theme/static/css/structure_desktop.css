@@ -38,6 +38,7 @@ body > header logo > div {
 	top: 3pt;
 	right: 5pt;
 	text-align: right;
+	max-width: 70%;
 }
 
 #mainmenu a {
