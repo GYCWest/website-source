@@ -6,19 +6,12 @@ body > header header {
 	margin: 70pt 0 40pt 0;
 }
 
-body > header header > h1 {
-	margin: 0;
-}
-
-body > header header > h2 {
-	margin: 0;
-}
-
 body > header logo {
 	display: block;
 	position: absolute;
 	top: -40px;
 	left: -30px;
+	z-index: 1;
 	
 	width: 290px;
 }
