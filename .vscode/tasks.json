@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "taskName": "Run Dev Server",
+            "label": "Run Dev Server",
             "type": "shell",
             "command": "hugo server --baseURL 0.0.0.0 --bind 0.0.0.0 --port 5341 --watch --cleanDestinationDir",
             "isBackground": true,
@@ -12,7 +12,7 @@
             
         },
         {
-            "taskName": "Deploy",
+            "label": "Deploy",
             "type": "shell",
             "linux": {
                 "command": "deploy.sh"
