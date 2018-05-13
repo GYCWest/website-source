@@ -2,21 +2,22 @@
     // See https://go.microsoft.com/fwlink/?LinkId=733558
     // for the documentation about the tasks.json format
     "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "Run Dev Server",
-            "type": "shell",
-            "command": "hugo server --baseURL 0.0.0.0 --bind 0.0.0.0 --port 5341 --watch --cleanDestinationDir",
-            "isBackground": true,
-            "promptOnClose": true
-            
-        },
-        {
-            "label": "Deploy",
-            "type": "shell",
-            "linux": {
-                "command": "deploy.sh"
-            }
-        }
-    ]
-}
+		"tasks": [
+			{
+				"label": "Run Dev Server",
+				"type": "shell",
+				"command": "hugo server --baseURL 0.0.0.0 --bind 0.0.0.0 --port 5341 --watch --cleanDestinationDir",
+				"isBackground": true,
+				"promptOnClose": true,
+				"problemMatcher": []
+			},
+			{
+				"label": "Deploy",
+				"type": "shell",
+				"linux": {
+					"command": "./deploy.sh"
+				},
+				"problemMatcher": []
+			}
+		]
+	}
