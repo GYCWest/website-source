@@ -180,6 +180,7 @@ label[for=mainmenucontrol]::after {
 
 @media screen and (max-width: 736px) {
 	header > h1 {
+		font-size: 30pt;
 		letter-spacing: 8pt;
 		padding-top: 1em;
 	}
