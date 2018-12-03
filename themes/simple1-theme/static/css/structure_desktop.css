@@ -1,4 +1,5 @@
 body {
+	margin: 0;
 }
 
 body > header header {
@@ -123,6 +124,10 @@ img {
 	
 	label[for=mainmenucontrol] {
 		display: block;
+	}
+
+	body > section {
+		padding: 1em 1em;
 	}
 }
 @media screen and (max-width: 480px) {

@@ -20,7 +20,7 @@ IgnoreFiles = [
 	#backendhost = "//10.0.2.13:1313"
 
 	[params.date]
-		year = 2018
+		year = 2019
 		days = "" #"JUNE 20-24"
 
 	[params.copyright]
