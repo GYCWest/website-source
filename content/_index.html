@@ -100,7 +100,22 @@ weight = -100
 		text-indent: -3em;
 		margin-left: 3.5em;
 	}
+
+	@media screen and (max-width: 480px) {
+		iframe, .map > iframe {
+			width: 100%;
+			margin: 0;
+			float: none;
+		}
+	}
 </style>
+<script>(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2';
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
 <!--
 <section id="media">
 	<article id="live">
@@ -193,4 +208,13 @@ weight = -100
 		<p>Please be aware that we will be recording and live streaming our events, so please dress modestly.</p>
 	</article>
 </section>
-
+<section>
+	<h1>Social Media</h1>
+	<p>Be sure to follow us on our social media platforms!</p>
+	<div style="width:340px;display:inline-block;vertical-align:top;">
+		<a href="https://www.instagram.com/gycwest/">@gycwest Instagram</a>
+	</div>
+	<div style="width:340px;height:500px;display:inline-block;margin:0;" class="fb-page" data-href="https://www.facebook.com/GYCWest" data-tabs="timeline, events" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+		<blockquote cite="https://www.facebook.com/GYCWest" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/GYCWest">GYC-West (WYC)</a></blockquote>
+	</div>
+</section>
