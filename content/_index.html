@@ -10,6 +10,7 @@ weight = -100
 +++
 <style type="text/css">
 	#speakers {
+		position: relative;
 		padding-top: 5em;
 		background-image: url("/img/ricardo-cruz-1156865-unsplash.jpg");
 		background-position: center;
@@ -23,6 +24,30 @@ weight = -100
 		padding: 0 10pt 0 10pt;
 		max-width: 200px;
 		vertical-align: top;
+	}
+	
+	#speakers > article * {
+		cursor: default;
+	}
+
+	details[open] {
+		display: block;
+		box-sizing: border-box;
+		position: absolute;
+		top: 2em;
+		left: 50%;
+		margin: 0 -300px;
+		width: 600px;
+		z-index: 10;
+
+		background: silver;
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		overflow-y: auto;
+		padding: 1em;
+		border-radius: 5px;
+		text-align: left;
 	}
 	
 	#speakers > article > img, #speakers > article > div {
@@ -74,6 +99,11 @@ weight = -100
 			height: 80px;
 		}
 		*/
+		details[open] {
+			left: 0;
+			margin: 0 0 0 5vw;
+			width: 85vw;
+		}
 	}
 
 	#themescripture {
@@ -130,8 +160,29 @@ weight = -100
 			margin: 0;
 			float: none;
 		}
+		details[open] {
+			left: 0;
+			margin: 0 0;
+			width: 100%;
+		}
 	}
 </style>
+<script lang="text/javascript">
+	$(function() {
+		$("#speakers > article").click(function(event) {
+			console.debug("rwc", event.target.tagName);
+			event.stopPropagation();
+			if (event.target.tagName === "DETAILS") {
+				return;
+			}
+			var detail = $(event.delegateTarget).children("details");
+			detail.attr("open", !detail.attr("open"));
+		});
+		$("body").click(function() {
+			$("details").attr("open", false);
+		});
+	});
+</script>
 <script>(function(d, s, id) {
 		var js, fjs = d.getElementsByTagName(s)[0];
 		if (d.getElementById(id)) return;
@@ -214,6 +265,9 @@ weight = -100
 			<h1>Dee Casper</h1>
 			<!-- <p>subject title</p> -->
 		</div>
+		<details>
+			<p>Dee Casper is Director of the CORE Evangelism Training Program (www.paconference.org/core). Dee lived 30 minutes from 3ABN World Headquarters for 21 years and had never heard of a Seventh-Day Adventist, but by the grace of God, he found the message through 3ABN TV beginning in the fall of 2006. He was baptized in 2010 at the ARISE Cornerstone program, and has been involved in ministry ever since. He has served as a Bible worker, been a Bible teacher in an academy setting, and has taught in different schools of evangelism. He loves investing in young people, and opening their eyes to the beauty of the Everlasting Gospel, and the value that God places on each of them individually.</p>
+		</details>
 	</article>
 </section>
 <section id="map" class="map">
