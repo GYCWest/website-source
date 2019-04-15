@@ -3,6 +3,7 @@
 <nav id="mainmenu">
 	{{ $currentPage := . }}
 	{{ range .Site.Menus.main }}
-		<a href="{{.URL}}"{{ if eq $currentPage.URL .URL }}class="current"{{ end }}>{{ .Name }}</a>
+		<!-- This bare .URL is from the MenuEnty type not the Page type. -->
+		<a href="{{.URL}}"{{ if eq $currentPage.RelPermalink .URL }}class="current"{{ end }}>{{ .Name }}</a>
 	{{ end }}
 </nav>
