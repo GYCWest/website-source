@@ -17,6 +17,9 @@
 				"linux": {
 					"command": "./deploy.sh"
 				},
+				"osx": {
+					"command": "./deploy.sh"
+				},
 				"problemMatcher": []
 			}
 		]
