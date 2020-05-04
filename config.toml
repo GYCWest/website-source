@@ -21,7 +21,8 @@ IgnoreFiles = [
 
 	[params.date]
 		year = 2020
-		days = "JUNE 3-7"
+		#days = "JUNE 3-7"
+		days = "T.B.D."
 
 	[params.copyright]
 		copyrights = [
