@@ -160,9 +160,15 @@ weight = -100
 		column-rule: 1px solid black;
 	}
 	
-	div.columns > p {
+	div.columns > p, div.columns > div > p {
 		text-indent: -3em;
 		margin-left: 3.5em;
+	}
+	
+	div.columns > div {
+		break-inside: avoid;
+		page-break-inside: avoid;
+		-webkit-column-break-inside: avoid;
 	}
 
 	@media screen and (max-width: 480px) {
@@ -287,66 +293,45 @@ weight = -100
 		&key=AIzaSyBkIpJw0XsFQoMjgJqBoaUbD0EyHm6u4GE">
 	</iframe>
 </section>
-<!--
+
 <section id="schedule">
 	<article>
 		<h1>Schedule</h1>
 		<div class="columns">
-			<p>TBA</p>
-			<h2><time datetime="2018-06-05">Wednesday, June 5</time></h2>
-			<p><time datetime="2018-06-05T15:00-07:00">3pm</time> - Registration opens - be sure to <a href="/registration">register online</a> to speed things up!</p>
-			<p><time datetime="2018-06-05T17:30-07:00">5:30pm</time> - Supper</p>
-			<p><time datetime="2018-06-05T18:30-07:00">6:30pm</time> - Evening Plenary with Dee Casper</p>
-			<p><time datetime="2018-06-05T19:45-07:00">7:45pm</time> - Campfire meet & greet, followed by Small Groups introductions</p>
-			<p><time datetime="2018-06-05T20:45-07:00">8:45pm</time> - Bed time</p>
+			<div>
+				<h2><time datetime="2020-07-24">Friday</time></h2>
+				<p><time datetime="2020-07-24T14:00-07:00">2pm</time> - Sign-in opens - be sure to <a href="/registration">register online</a> to speed things up!</p>
+			</div>
+			<p><time datetime="2020-07-24T18:00-07:00">6:00pm</time> - Evening Plenary</p>
+			<p><time datetime="2020-07-24T19:45-07:00">8:00pm</time> - Campfire Fellowship</p>
+			<p><time datetime="2020-07-24T20:45-07:00">8:45pm</time> - United Prayer</p>
 
-			<h2><time datetime="2018-06-06">Thursday, June 6</time></h2>
-			<p><time datetime="2018-06-06T06:00-07:00">6am</time> - United Prayer</p>
-			<p><time datetime="2018-06-06T07:00-07:00">7am</time> - Breakfast</p>
-			<p><time datetime="2018-06-06T08:15-07:00">8:15am</time> - Tidepool outing with Jerry Rasmussen</p>
-			<p><time datetime="2018-06-06T10:30-07:00">10:30am</time> - Plenary with Dr. Diane Burnett</p>
-			<p><time datetime="2018-06-06T12:15-07:00">12:15pm</time> - Lunch</p>
-			<p><time datetime="2018-06-06T14:00-07:00">2pm</time> - Boating</p>
-			<p><time datetime="2018-06-06T17:30-07:00">5:30pm</time> - Supper</p>
-			<p><time datetime="2018-06-06T18:30-07:00">6:30pm</time> - Evening Plenary with Dee Casper</p>
-			<p><time datetime="2018-06-06T19:45-07:00">7:45pm</time> - Small Groups</p>
-			<p><time datetime="2018-06-06T20:45-07:00">8:45pm</time> - Bed time</p>
+			<div>
+				<h2><time datetime="2020-07-25">Sabbath</time></h2>
+				<p><time datetime="2020-07-25T06:45-07:00">6:45am</time> - United Prayer</p>
+			</div>
+			<p><time datetime="2020-07-25T07:30-07:00">7:30am</time> - Breakfast</p>
+			<p><time datetime="2020-07-25T09:30-07:00">9:30am</time> - Start of Sabbath School</p>
+			<p><time datetime="2020-07-25T10:45-07:00">10:45am</time> - Start of Church service</p>
+			<p><time datetime="2020-07-25T12:30-07:00">12:30pm</time> - Lunch</p>
+			<p><time datetime="2020-07-25T13:30-07:00">1:30pm</time> - Nature time</p>
+			<p><time datetime="2020-07-25T18:00-07:00">6:00pm</time> - Evening Plenary</p>
+			<p><time datetime="2020-07-25T19:45-07:00">7:45pm</time> - Campfire Fellowship</p>
+			<p><time datetime="2020-07-25T20:45-07:00">8:45pm</time> - United Prayer</p>
 
-			<h2><time datetime="2018-06-07">Friday, June 7</time></h2>
-			<p><time datetime="2018-06-07T06:00-07:00">6am</time> - United Prayer</p>
-			<p><time datetime="2018-06-07T07:00-07:00">7am</time> - Breakfast</p>
-			<p><time datetime="2018-06-07T08:15-07:00">8:15am</time> - Plenary with Dr. Diane Burnett</p>
-			<p><time datetime="2018-06-07T10:00-07:00">10am</time> - Training for following activity</p>
-			<p><time datetime="2018-06-07T10:30-07:00">10:30am</time> - Activity of your choice: Local community outreach or Albion grounds repair and cleanup</p>
-			<p><time datetime="2018-06-07T14:00-07:00">2pm</time> - Little River and Blowhole outing with Jerry Rasmussen</p>
-			<p><time datetime="2018-06-07T17:30-07:00">5:30pm</time> - Supper</p>
-			<p><time datetime="2018-06-07T18:30-07:00">6:30pm</time> - Evening Plenary with Dee Casper</p>
-			<p><time datetime="2018-06-07T19:45-07:00">7:45pm</time> - Campfire Vespers, followed by Small Groups</p>
-			<p><time datetime="2018-06-07T20:45-07:00">8:45pm</time> - Bed time</p>
-			
-			<h2><time datetime="2018-06-08">Sabbath, June 8</time></h2>
-			<p><time datetime="2018-06-08T06:00-07:00">6am</time> - United Prayer</p>
-			<p><time datetime="2018-06-08T07:00-07:00">7am</time> - Breakfast</p>
-			<p><time datetime="2018-06-08T08:15-07:00">8:15am</time> - Start of Sabbath School, Dr. Diane Burnett speaking</p>
-			<p><time datetime="2018-06-08T10:00-07:00">10am</time> - Start of Church service, Dee Casper speaking</p>
-			<p><time datetime="2018-06-06T12:15-07:00">12:15pm</time> - Lunch</p>
-			<p><time datetime="2018-06-06T13:30-07:00">1:30pm</time> - Outdoors activities with Jerry Rasmussen</p>
-			<p><time datetime="2018-06-08T17:30-07:00">5:30pm</time> - Supper</p>
-			<p><time datetime="2018-06-08T18:30-07:00">6:30pm</time> - Evening Plenary with Dee Casper</p>
-			<p><time datetime="2018-06-08T19:45-07:00">7:45pm</time> - Campfire Vespers, followed by Small Groups</p>
-			<p><time datetime="2018-06-08T20:45-07:00">8:45pm</time> - Bed time</p>
-			
-			<h2><time datetime="2018-06-09">Sunday, June 9</time></h2>
-			<p><time datetime="2018-06-09T06:00-07:00">6am</time> - United Prayer</p>
-			<p><time datetime="2018-06-09T07:00-07:00">7am</time> - Clean your spaces - leave it better than you found it!</p>
-			<p><time datetime="2018-06-09T07:30-07:00">7:30am</time> - Questions answered</p>
-			<p><time datetime="2018-06-09T09:15-07:00">9:15am</time> - Small Group closure</p>
-			<p><time datetime="2018-06-09T10:00-07:00">10am</time> - Brunch</p>
-			<p><time datetime="2018-06-09T11:00-07:00">11am</time> - Checkout and full cleanup. We need your help, just ask us!</p>
+			<div>
+				<h2><time datetime="2020-07-26">Sunday</time></h2>
+				<p><time datetime="2020-07-26T06:45-07:00">6:45am</time> - United Prayer</p>
+			</div>
+			<p><time datetime="2020-07-26T07:30-07:00">7:30am</time> - Breakfast</p>
+			<p><time datetime="2020-07-26T08:30-07:00">8:30am</time> - Small Group closure</p>
+			<p><time datetime="2020-07-26T09:30-07:00">9:30am</time> - Clean your spaces - leave it better than you found it!</p>
+			<p><time datetime="2020-07-26T11:00-07:00">11am</time> - Full cleanup. We need your help, just ask us!</p>
+			<p><time datetime="2020-07-26T14:00-07:00">2pm</time> - Final checkout.</p>
 		</div>
 	</article>
 </section>
--->
+
 <section id="registration-info">
 	<article>
 		<h1>Pricing and site notes</h1>
