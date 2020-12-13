@@ -1,4 +1,13 @@
 {
-    "editor.insertSpaces": false,
-    "editor.detectIndentation": false
+	"editor.insertSpaces": false,
+	"editor.detectIndentation": false,
+	"spellright.language": ["en_US"],
+	"spellright.documentTypes": [
+		"ini",
+		"latex",
+		"markdown",
+		"plaintext",
+		"typescript",
+		"html"
+	]
 }
