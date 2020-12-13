@@ -20,11 +20,11 @@ IgnoreFiles = [
 	#backendhost = "//10.0.2.13:1313"
 
 	[params.date]
-		year = 2020
-		days = "JULY 24-26"
-		#days = "T.B.D."
+		year = 2021
+		#days = "JULY 24-26"
+		days = "Date T.B.D."
 
 	[params.copyright]
 		copyrights = [
-			"Copyright 2020, Richard Curtice",
+			"Copyright 2021, Richard Curtice",
 		]
