@@ -17,7 +17,7 @@ if ! git diff-index --cached --quiet HEAD --ignore-submodules --; then
 fi
 
 # Build the project.
-hugo --destination ../frontend.live
+HUGO_VERSION=0.82.0 npx hugo --destination ../frontend.live
 
 cd ../frontend.live
 

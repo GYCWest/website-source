@@ -1,12 +1,17 @@
 {
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
-    "version": "2.0.0",
+		// See https://go.microsoft.com/fwlink/?LinkId=733558
+		// for the documentation about the tasks.json format
+		"version": "2.0.0",
 		"tasks": [
 			{
 				"label": "Run Dev Server",
 				"type": "shell",
-				"command": "hugo server --baseURL 0.0.0.0 --bind 0.0.0.0 --port 5341 --watch --cleanDestinationDir",
+				"command": "npx hugo-cli server --baseURL 0.0.0.0 --bind 0.0.0.0 --port 5341 --watch --cleanDestinationDir",
+				"options": {
+					"env": {
+						"HUGO_VERSION": "0.82.0"
+					}
+				},
 				"isBackground": true,
 				"promptOnClose": true,
 				"problemMatcher": []
