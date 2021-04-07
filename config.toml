@@ -10,7 +10,7 @@ IgnoreFiles = [
 
 [params]
 	# To provide some metadata for search engines feel free to add a few
-    # information about you and your website.
+	# information about you and your website.
 	name = "Ricky Curtice"
 	description = "GYC West"
 
@@ -21,8 +21,8 @@ IgnoreFiles = [
 
 	[params.date]
 		year = 2021
-		#days = "JULY 24-26"
-		days = "Date T.B.D."
+		days = "AUG 4-8"
+		# days = "Date T.B.D."
 
 	[params.copyright]
 		copyrights = [
