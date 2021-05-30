@@ -13,6 +13,12 @@
 		"url": "https://github.com/GYCWest/website-source/issues"
 	},
 	"homepage": "https://github.com/GYCWest/website-source#readme",
+	"scripts": {
+		"build:favicon": "npx -p cli-real-favicon real-favicon generate faviconDescription.json faviconData.json static",
+		"build:icon": "npx svgo --multipass -i master_images/logo_2021-01.svg -o static/img/logo_2021-01.svg",
+		"prepare": "npm run build:icon && npm run build:favicon",
+		"update:favicon": "npx -p cli-real-favicon real-favicon check-for-update --fail-on-update faviconData.json"
+	},
 	"devDependencies": {
 		"hugo-bin": "^0.71.1"
 	}

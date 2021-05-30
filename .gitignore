@@ -1,3 +1,12 @@
-public
-.live-dev
+/public
+/.live-dev
 node_modules
+/faviconData.json
+/static/img/logo*.svg
+/static/android-*.png
+/static/apple-*.png
+/static/browserconfig.xml
+/static/favicon*
+/static/mstile-*
+/static/safari-*
+/static/site.webmanifest
