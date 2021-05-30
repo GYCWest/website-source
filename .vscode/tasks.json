@@ -6,12 +6,7 @@
 			{
 				"label": "Run Dev Server",
 				"type": "shell",
-				"command": "npx hugo-cli server --baseURL 0.0.0.0 --bind 0.0.0.0 --port 5341 --watch --cleanDestinationDir",
-				"options": {
-					"env": {
-						"HUGO_VERSION": "0.82.0"
-					}
-				},
+				"command": "$(npm bin)/hugo server --baseURL 0.0.0.0 --bind 0.0.0.0 --port 5341 --watch --cleanDestinationDir",
 				"isBackground": true,
 				"promptOnClose": true,
 				"problemMatcher": []

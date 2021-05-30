@@ -1,0 +1,19 @@
+{
+	"name": "gycwest-website-source",
+	"version": "1.0.0",
+	"description": "",
+	"main": "",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/GYCWest/website-source.git"
+	},
+	"author": "Ricky Curtice",
+	"license": "UNLICENSED",
+	"bugs": {
+		"url": "https://github.com/GYCWest/website-source/issues"
+	},
+	"homepage": "https://github.com/GYCWest/website-source#readme",
+	"devDependencies": {
+		"hugo-bin": "^0.71.1"
+	}
+}

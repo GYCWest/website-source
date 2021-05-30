@@ -8,4 +8,4 @@ else # Windows?
 	start http://localhost:5341/ &
 fi
 
-hugo server --baseURL 0.0.0.0 --bind 0.0.0.0 --port 5341 --watch --cleanDestinationDir $@
+$(npm bin)/hugo server --baseURL 0.0.0.0 --bind 0.0.0.0 --port 5341 --watch --cleanDestinationDir $@
