@@ -17,20 +17,20 @@ if ! git diff-index --cached --quiet HEAD --ignore-submodules --; then
 fi
 
 # Build the project.
-HUGO_VERSION=0.82.0 npx hugo --destination ../frontend.live
+HUGO_VERSION=0.82.0 npx hugo --destination ../frontend.live || exit 1
 
 cd ../frontend.live
 
 # Add changes to git.
-git add -Af
+git add -Af || exit 1
 
 # Commit changes.
 msg="Rebuilding site `date`"
 if [ $# -eq 1 ]
   then msg="$1"
 fi
-git commit -m "$msg"
+git commit -m "$msg" || exit 1
 
 # Push source and build repos.
-git push origin master
+git push origin master || exit 1
 #git subtree push --prefix=public git@github.com:revivaltoolkit/revivaltoolkit.github.io.git master
