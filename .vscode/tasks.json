@@ -4,14 +4,25 @@
 		"version": "2.0.0",
 		"tasks": [
 			{
-				"label": "Run Dev Server",
-				"type": "shell",
-				"command": "$(npm bin)/hugo server --baseURL 0.0.0.0 --bind 0.0.0.0 --port 5341 --watch --cleanDestinationDir",
+				"detail": "hugo server --baseURL 0.0.0.0 --bind 0.0.0.0 --port 5341 --watch --cleanDestinationDir",
+				"group": "build",
 				"isBackground": true,
+				"label": "Run Dev Server",
+				"problemMatcher": {
+					"background": {
+						"activeOnStart": true,
+						"beginsPattern": "^Start building sites.*$",
+						"endsPattern": "^Web Server is available at.*$"
+					},
+					"owner": "custom",
+					"pattern": { "regexp": "__________" },
+				},
 				"promptOnClose": true,
-				"problemMatcher": []
+				"script": "start",
+				"type": "npm",
 			},
 			{
+				"group": "build",
 				"label": "Deploy",
 				"type": "shell",
 				"linux": {

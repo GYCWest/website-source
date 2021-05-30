@@ -17,7 +17,8 @@
 		"build:favicon": "npx -p cli-real-favicon real-favicon generate faviconDescription.json faviconData.json static",
 		"build:icon": "npx svgo --multipass -i master_images/logo_2021-01.svg -o static/img/logo_2021-01.svg",
 		"prepare": "npm run build:icon && npm run build:favicon",
-		"update:favicon": "npx -p cli-real-favicon real-favicon check-for-update --fail-on-update faviconData.json"
+		"update:favicon": "npx -p cli-real-favicon real-favicon check-for-update --fail-on-update faviconData.json",
+		"start": "hugo server --baseURL 0.0.0.0 --bind 0.0.0.0 --port 5341 --watch --cleanDestinationDir"
 	},
 	"devDependencies": {
 		"hugo-bin": "^0.71.1"
