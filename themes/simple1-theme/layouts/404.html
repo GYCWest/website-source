@@ -37,7 +37,7 @@
 				<h2>Page Not Found</h2>
 			</header>
 			{{ partial "mainmenu" (dict "sourceUrl" "/404") }}
-			<logo><img src="/img/logo_2021-01.svg" alt="GYC West logo"/><div><p id="year">2018</p><p id="date">JUNE 20-24</p></div></logo>
+			<logo><a href="/"><img src="/img/logo_2021-01.svg" alt="GYC West logo" width="160px" /></a>{{ with .Site.Params.date }}<div><p id="year">{{ .year }}</p><p id="date">{{ .days }}</p></div>{{ end }}</logo>
 		</header>
 		<section>
 			<p>Please use the menu to find the page you are really looking for, or head to the <a href="/">home page to get the latest about GYC West!</a></p>
