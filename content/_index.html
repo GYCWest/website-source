@@ -193,6 +193,46 @@ weight = -100
 </style>
 <script lang="text/javascript">
 	$(function() {
+		const now = new Date();
+		for (const el of $("[data-after], [data-before]")) {
+			const afterAttr = el.getAttribute("data-after");
+			const showAfter = new Date(afterAttr);
+			
+			const beforeAttr = el.getAttribute("data-before");
+			const showBefore = new Date(beforeAttr);
+
+			if (afterAttr && beforeAttr) {
+				if (showAfter < showBefore) {
+					// Only show when between the two dates. After, inclusive. Before, exclusive.
+					if (!(showAfter <= now && now < showBefore)) {
+						el.style.display = "none";
+						el.remove();
+					}
+				}
+				else {
+					// Only show when NOT between the two dates. After, inclusive. Before, exclusive.
+					if (showAfter <= now && now < showBefore) {
+						el.style.display = "none";
+						el.remove();
+					}
+				}
+			}
+			else if (afterAttr) {
+				// Only show when after, inclusive.
+				if (!(showAfter <= now)) {
+					el.style.display = "none";
+					el.remove();
+				}
+			}
+			else {
+				// Only show when before, exclusive.
+				if (!(now < showBefore)) {
+					el.style.display = "none";
+					el.remove();
+				}
+			}
+		}
+
 		$("#speakers > article").click(function(event) {
 			event.stopPropagation();
 			if (event.target.tagName === "DETAILS") {
@@ -206,34 +246,6 @@ weight = -100
 		$("body").click(function() {
 			$("details").attr("open", false);
 		});
-
-		const now = new Date();
-		for (const el of $("[data-after], [data-before]")) {
-			const afterAttr = el.getAttribute("data-after");
-			const showAfter = new Date(afterAttr);
-			
-			const beforeAttr = el.getAttribute("data-before");
-			const showBefore = new Date(beforeAttr);
-
-			if (afterAttr && beforeAttr) {
-				if (showAfter < showBefore) {
-					// Only when between the two dates. After, inclusive. Before, exclusive.
-					el.style.display = (showAfter <= now && now < showBefore) ? el.style.display : "none";
-				}
-				else {
-					// Only when NOT between the two dates. After, inclusive. Before, exclusive.
-					el.style.display = (showAfter <= now && now < showBefore) ? el.style.display : "none";
-				}
-			}
-			else if (afterAttr) {
-				// Only when after, inclusive.
-				el.style.display = (showAfter <= now) ? el.style.display : "none";
-			}
-			else {
-				// Only when before, exclusive.
-				el.style.display = (now < showBefore) ? el.style.display : "none";
-			}
-		}
 	});
 </script>
 <script>(function(d, s, id) {
