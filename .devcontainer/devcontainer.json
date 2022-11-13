@@ -1,0 +1,31 @@
+{
+	"name": "Node development",
+	"dockerComposeFile": "./docker-compose.yaml",
+	"service": "frontend",
+	"workspaceFolder": "/app",
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [80],
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"bodil.prettier-toml",
+				"bungcip.better-toml",
+				"DavidAnson.vscode-markdownlint",
+				"dbaeumer.vscode-eslint",
+				"EditorConfig.EditorConfig",
+				"esbenp.prettier-vscode",
+				"redhat.vscode-yaml",
+				"streetsidesoftware.code-spell-checker",
+				"usernamehw.errorlens",
+				"VisualStudioExptTeam.vscodeintellicode"
+			]
+		}
+	}
+
+	// Configure tool-specific properties.
+	// "customizations": {},
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}
