@@ -1,0 +1,218 @@
+name: Frontend CI
+
+concurrency:
+  group: ${{ github.workflow }}_${{ github.ref }}
+  # Workflow name is included to make sure that this is treated separately from other actions.
+  # The ref path is included to group items from the same PR or branch.
+  cancel-in-progress: true # Not only cancel any other runs in the group that are pending, but also any that are currently running: they are all outdated by the latest.
+
+env:
+  BUILD_ENV: ci
+  NODE_ENV: production
+
+on:
+  release:
+    types:
+      - "released"
+
+jobs:
+  test:
+    name: Checking code
+
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          path: source
+
+      - uses: tibdex/github-app-token@v1.7
+        id: generateWorkflowSourceToken
+        with:
+          app_id: ${{ secrets.TOKEN_PROVIDER_APP_ID }}
+          private_key: ${{ secrets.TOKEN_PROVIDER_APP_PRIVATE_KEY }}
+          repository: GYCWest/gycwest.github.io
+
+      - name: Checkout target repo
+        uses: actions/checkout@v3
+        with:
+          path: frontend.live
+          repository: GYCWest/gycwest.github.io
+          token: ${{ steps.generateWorkflowSourceToken.outputs.token }}
+
+      - id: node
+        run: |
+          export outputDir="$(pwd)/.ciout/Node setup"
+          mkdir -p "$outputDir"
+
+          (
+            cd source
+
+            versionsSemver="$( jq -r '.engines.node' package.json )"
+            echo "versionsSemver=$versionsSemver"; echo "versionsSemver=$versionsSemver" >> $GITHUB_OUTPUT
+
+            if ! [[ "$versionsSemver" =~ ^[0-9]+$ ]]; then
+              echo "package.json field 'engines.node' needs to be an integer version."
+              # Because there are no tools installed yet to either figure out what node versions exist or to filter them by the SemVer spec.
+              exit 1
+            fi
+
+            versionNewest="$versionsSemver"
+            echo "versionNewest=$versionNewest"; echo "versionNewest=$versionNewest" >> $GITHUB_OUTPUT
+          ) \
+            2>&1 \
+          | tee "$outputDir/nodesetup.log" \
+          ;
+
+          errorCode=${PIPESTATUS[0]}
+          if [ ${errorCode} -eq 0 ]; then
+            echo "passed" > "$outputDir/result.txt"
+          else
+            echo "failed" > "$outputDir/result.txt"
+            echo "::error file=package.json::$(sed -ze 's/%/%25/g' -e 's/\n/%0A/g' "$outputDir/nodesetup.log")"
+            exit $errorCode
+          fi
+        shell: bash
+
+      - uses: actions/setup-node@v3
+        with:
+          cache: npm
+          cache-dependency-path: source/package-lock.json
+          node-version: ${{ steps.node.outputs.versionNewest }}
+
+      - name: Check for vulnerabilities in dependencies
+        # Do this early to cause failure before allowing risky operations.
+        run: |
+          export outputDir="$(pwd)/.ciout/NPM audit"
+          mkdir -p "$outputDir"
+
+          (
+            cd source
+
+            npx audit-ci \
+              --moderate \
+              --report-type summary \
+            ;
+          ) \
+            2>&1 \
+          | tee "$outputDir/root.log" \
+          ;
+
+          errorCode=${PIPESTATUS[0]}
+          if [ ${errorCode} -eq 0 ]; then
+            echo "passed" > "$outputDir/result.txt"
+          else
+            echo "failed" > "$outputDir/result.txt"
+            echo "::error file=/package-lock.json::Package security audit failed."
+            exit $errorCode
+          fi
+
+      - name: Fetch dependencies
+        # Skip scripts here, as a malicious script could steal NODE_AUTH_TOKEN.
+        env:
+          # NODE_AUTH_TOKEN: ${{ secrets.GPR_READ_TOKEN }} # Only needed if we have private packages, which we don't yet.
+          NODE_ENV: ci # Override so that we get the dev dependencies.
+        run: |
+          export outputDir="$(pwd)/.ciout/Installing dependencies"
+          mkdir -p "$outputDir"
+
+          (
+            cd source
+
+            npm ci \
+              --no-fund \
+              --ignore-scripts \
+            ;
+          ) \
+            2>&1 \
+          | tee "$outputDir/ci.log" \
+          ;
+
+          errorCode=${PIPESTATUS[0]}
+          if [ ${errorCode} -eq 0 ]; then
+            echo "passed" > "$outputDir/result.txt"
+          else
+            echo "failed" > "$outputDir/result.txt"
+            exit $errorCode
+          fi
+
+      - name: Process dependencies
+        run: |
+          export outputDir="$(pwd)/.ciout/Rebuilding dependencies"
+          mkdir -p "$outputDir"
+
+          (
+            cd source
+
+            npm rebuild \
+            && npm run prepare --if-present \
+            && npm run postinstall --if-present \
+            ;
+          ) \
+            2>&1 \
+          | tee "$outputDir/ci-rebuild.log" \
+          ;
+
+          errorCode=${PIPESTATUS[0]}
+          if [ ${errorCode} -eq 0 ]; then
+            echo "passed" > "$outputDir/result.txt"
+          else
+            echo "failed" > "$outputDir/result.txt"
+            exit $errorCode
+          fi
+
+      - name: Build the code
+        run: |
+          export outputDir="$(pwd)/.ciout/Build"
+          mkdir -p "$outputDir"
+
+          (
+            cd source
+
+            npm run --if-present -- build ../frontend.live \
+              2>&1 \
+            | tee "$outputDir/build.log" \
+            ;
+
+            tree ../frontend.live \
+              2>&1 \
+            | tee "$outputDir/build-tree.log" \
+            ;
+          )
+
+          errorCode=${PIPESTATUS[0]}
+          if [ ${errorCode} -eq 0 ]; then
+            echo "passed" > "$outputDir/result.txt"
+          else
+            echo "failed" > "$outputDir/result.txt"
+            exit $errorCode
+          fi
+
+      - name: Deploy to live
+        run: |
+          export outputDir="$(pwd)/.ciout/Deploy"
+          mkdir -p "$outputDir"
+
+          (
+            cd frontend.live
+
+            git config --local user.name "github-actions[bot]"
+            git config --local user.email "github-actions[bot]@users.noreply.github.com"
+
+            git add -Af \
+            && git commit -m "Rebuilding site $(date)" \
+            && git push origin master \
+            ;
+          ) \
+            2>&1 \
+          | tee "$outputDir/build.log" \
+          ;
+
+          errorCode=${PIPESTATUS[0]}
+          if [ ${errorCode} -eq 0 ]; then
+            echo "passed" > "$outputDir/result.txt"
+          else
+            echo "failed" > "$outputDir/result.txt"
+            exit $errorCode
+          fi
