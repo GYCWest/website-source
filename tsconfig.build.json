@@ -1,0 +1,14 @@
+{ // Used for compiling only.
+	"extends": "./tsconfig.base.json",
+	"compilerOptions": {
+		"noEmit": false,
+		"rootDir": "src"
+	},
+	"exclude": [
+		".github",
+		"*.test.ts"
+	],
+	"ts-node": {
+		// "transpileOnly": true
+	}
+}

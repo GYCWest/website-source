@@ -30,3 +30,199 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - id: node
+        run: |
+          export outputDir="$(pwd)/.ciout/Node setup"
+          mkdir -p "$outputDir"
+
+          (
+            versionsSemver="$( jq -r '.engines.node' package.json )"
+            echo "versionsSemver=$versionsSemver"; echo "versionsSemver=$versionsSemver" >> $GITHUB_OUTPUT
+
+            if ! [[ "$versionsSemver" =~ ^[0-9]+$ ]]; then
+              echo "package.json field 'engines.node' needs to be an integer version."
+              # Because there are no tools installed yet to either figure out what node versions exist or to filter them by the SemVer spec.
+              exit 1
+            fi
+
+            versionNewest="$versionsSemver"
+            echo "versionNewest=$versionNewest"; echo "versionNewest=$versionNewest" >> $GITHUB_OUTPUT
+          ) \
+            2>&1 \
+          | tee "$outputDir/nodesetup.log" \
+          ;
+
+          if [ ${PIPESTATUS[0]} -eq 0 ]; then
+            echo "passed" > "$outputDir/result.txt"
+          else
+            echo "failed" > "$outputDir/result.txt"
+            echo "::error file=package.json::$(sed -ze 's/%/%25/g' -e 's/\n/%0A/g' "$outputDir/nodesetup.log")"
+            exit 1
+          fi
+        shell: bash
+
+      - uses: actions/setup-node@v3
+        with:
+          cache: npm
+          node-version: ${{ steps.node.outputs.versionNewest }}
+
+      - name: Check for vulnerabilities in dependencies
+        # Do this early to cause failure before allowing risky operations.
+        run: |
+          export outputDir="$(pwd)/.ciout/NPM audit"
+          mkdir -p "$outputDir"
+
+          npx audit-ci@^6 \
+            --moderate \
+            --report-type summary \
+            2>&1 \
+          | tee "$outputDir/root.log" \
+          ;
+
+          if [ ${PIPESTATUS[0]} -eq 0 ]; then
+            echo "passed" > "$outputDir/result.txt"
+          else
+            echo "failed" > "$outputDir/result.txt"
+            echo "::error file=/package-lock.json::Package security audit failed."
+            exit 1
+          fi
+
+      - name: Fetch dependencies
+        # Skip scripts here, as a malicious script could steal NODE_AUTH_TOKEN.
+        run: |
+          export outputDir="$(pwd)/.ciout/Installing dependencies"
+          mkdir -p "$outputDir"
+
+          npm ci \
+            --no-fund \
+            --ignore-scripts \
+            2>&1 \
+          | tee "$outputDir/ci.log" \
+          ;
+
+          if [ ${PIPESTATUS[0]} -eq 0 ]; then
+            echo "passed" > "$outputDir/result.txt"
+          else
+            echo "failed" > "$outputDir/result.txt"
+            exit 1
+          fi
+        env:
+          # NODE_AUTH_TOKEN: ${{ secrets.GPR_READ_TOKEN }} # Only needed if we have private packages, which we don't yet.
+          NODE_ENV: ci # Override so that we get the dev dependencies.
+
+      - name: Process dependencies
+        run: |
+          export outputDir="$(pwd)/.ciout/Rebuilding dependencies"
+          mkdir -p "$outputDir"
+
+          npm rebuild \
+          && npm run prepare --if-present \
+          && npm run postinstall --if-present \
+            2>&1 \
+          | tee "$outputDir/ci-rebuild.log" \
+          ;
+
+          if [ ${PIPESTATUS[0]} -eq 0 ]; then
+            echo "passed" > "$outputDir/result.txt"
+          else
+            echo "failed" > "$outputDir/result.txt"
+            exit 1
+          fi
+
+      - name: Lint the code
+        run: |
+          export outputDir="$(pwd)/.ciout/Lint"
+          mkdir -p "$outputDir"
+
+          npm run --if-present -- lint \
+            2>&1 \
+          | tee "$outputDir/ci-rebuild.log" \
+          ;
+
+          if [ ${PIPESTATUS[0]} -eq 0 ]; then
+            echo "passed" > "$outputDir/result.txt"
+          else
+            echo "failed" > "$outputDir/result.txt"
+            exit 1
+          fi
+
+      - name: Build the code
+        run: |
+          export outputDir="$(pwd)/.ciout/Build"
+          mkdir -p "$outputDir"
+
+          mkdir -p ".build"
+          npm run --if-present -- build .build \
+            2>&1 \
+          | tee "$outputDir/build.log" \
+          ;
+
+          tree .build \
+            2>&1 \
+          | tee "$outputDir/build-tree.log" \
+          ;
+
+          rm -rf .build
+
+          if [ ${PIPESTATUS[0]} -eq 0 ]; then
+            echo "passed" > "$outputDir/result.txt"
+          else
+            echo "failed" > "$outputDir/result.txt"
+            exit 1
+          fi
+
+      - name: Test the code
+        run: |
+          export outputDir="$(pwd)/.ciout/Test"
+          mkdir -p "$outputDir"
+
+          npm run --if-present -- test \
+            2>&1 \
+          | tee "$outputDir/test.log" \
+          ;
+
+          if [ ${PIPESTATUS[0]} -eq 0 ]; then
+            echo "passed" > "$outputDir/result.txt"
+          else
+            echo "failed" > "$outputDir/result.txt"
+            exit 1
+          fi
+
+      - name: Generating report
+        id: report
+        if: success() || failure()
+        run: |
+          find \
+            "$(pwd)/.ciout/" \
+            -maxdepth 1 \
+            -mindepth 1 \
+            -type d \
+            -printf "%T+\t%p\0" \
+          | sort --zero-terminated \
+          | parallel \
+            --colsep '\t' \
+            --null \
+            --jobs 1 \
+            --will-cite \
+            '"$(npm bin)/ts-node-script" .github/scripts/ci/generatereport.ts {2}' \
+          | tee .ciout/report.txt \
+          ;
+        shell: bash
+
+      - name: Reporting results to PR
+        uses: actions/github-script@v6.3.3
+        if: ${{ ( success() || failure() ) && github.event_name == 'pull_request' }}
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const FS = require("fs");
+            const { issue: { number: issue_number }, repo: { owner, repo } } = context;
+
+            github.rest.issues.createComment({
+              issue_number,
+              owner,
+              repo,
+              body: `## CI ${{ job.status }}
+            ${FS.readFileSync(".ciout/report.txt", "utf8")}`
+            });
