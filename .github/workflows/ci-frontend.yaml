@@ -1,0 +1,32 @@
+name: Frontend CI
+
+concurrency:
+  group: ${{ github.workflow }}_${{ github.ref }}
+  # Workflow name is included to make sure that this is treated separately from other actions.
+  # The ref path is included to group items from the same PR or branch.
+  cancel-in-progress: true # Not only cancel any other runs in the group that are pending, but also any that are currently running: they are all outdated by the latest.
+
+env:
+  BUILD_ENV: ci
+  NODE_ENV: production
+
+on:
+  pull_request:
+    branches: # Only PRs that target the following branches.
+      - main
+      - master
+    # The default types are good enough. See https://frontside.com/blog/2020-05-26-github-actions-pull_request/ for a good explanation of the types.
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  test:
+    name: Checking code
+
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
