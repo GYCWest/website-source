@@ -1,0 +1,12 @@
+{ // Used for editors and linting, not for compiling.
+	"extends": "./tsconfig.base.json",
+	"compilerOptions": {
+		"rootDir": "api"
+	},
+	"exclude": [
+		".github"
+	],
+	"ts-node": {
+		// "transpileOnly": true
+	}
+}
